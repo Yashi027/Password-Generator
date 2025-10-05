@@ -39,7 +39,7 @@ function App() {
 
     try {
       const endpoint = isLogin ? '/auth/login' : '/auth/signup';
-      const res = await fetch(`http://localhost:5000${endpoint}`, {
+      const res = await fetch(`${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -63,7 +63,7 @@ function App() {
 
   const fetchVault = async (token, derivedKey) => {
     try {
-      const res = await fetch('http://localhost:5000/vault', {
+      const res = await fetch('/vault', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -87,7 +87,7 @@ function App() {
 
     if (editIndex !== null) {
       const itemId = vault[editIndex]._id;
-      const res = await fetch(`http://localhost:5000/vault/${itemId}`, {
+      const res = await fetch(`/vault/${itemId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ function App() {
       });
       setEditIndex(null);
     } else {
-      const res = await fetch('http://localhost:5000/vault', {
+      const res = await fetch('/vault', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ function App() {
 
   const deleteVaultItem = async (index) => {
     const itemId = vault[index]._id;
-    await fetch(`http://localhost:5000/vault/${itemId}`, {
+    await fetch(`/vault/${itemId}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${jwtToken}` }
     });

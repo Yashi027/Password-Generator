@@ -1,0 +1,13 @@
+{
+  "name": "password-generator-fullstack",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node backend/server.js",
+    "install-frontend": "cd frontend && npm install",
+    "build-frontend": "cd frontend && npm run build",
+    "postinstall": "npm run install-frontend && npm run build-frontend"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
